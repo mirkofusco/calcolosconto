@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calcolo sconto </title>
+    <style>
+        body{
+            background-color: black;
+        }
+        table{
+            text-align: center;
+            color: white;
+        }
+        h1{
+            color: red;
+        }
+        tr{
+            text-align: center;
+        }
+       
+    </style>
+</head>
+<body>
+    <p><h1>Calcola lo sconto</h1></p>
+
+    <table>
+        <tr>
+            <td>Importo</td>
+            <td><input type="text" id="importo"> €</td>
+        </tr>
+        <br>
+        <tr>
+            <td>Sconto</td>
+            <td><input type="text" id="sconto"> %</td>
+        </tr>
+        <br>
+        <tr>
+            <td>Prezzo Scontato</td>
+            <td id="p_sconto"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><button id="btn">Calcola Sconto</button></td>
+        </tr>
+
+        <script>
+
+            const importo = document.querySelector("#importo") 
+            const sconto = document.querySelector("#sconto")
+            const btn = document.querySelector("#btn")
+            const p_sconto = document.querySelector("#p_sconto")
+
+            btn.addEventListener("click", ()=>{
+
+                p_sconto.innerHTML = "<b>" + scontoAp(Number(importo.value),Number(sconto.value)) + "€</b>"
+            })
+
+            function scontoAp(importo, p_sconto){
+                return (importo * (100 - p_sconto)) / 100
+            }
+
+            
+            //Creo la funzione per impedire la scritture dei numeri
+        function soloNumeri(txt){
+            console.log(txt)
+            if(!isNaN(txt.charAt(txt.length-1))){
+                alert("Puoi inserire solo lettere")
+                txt = txt.substring(0,txt.length-1)
+                console.log(txt)
+                return txt
+            }else{
+                return txt
+            }
+        }
+        </script>
+</table>
+</body>
+</html>
